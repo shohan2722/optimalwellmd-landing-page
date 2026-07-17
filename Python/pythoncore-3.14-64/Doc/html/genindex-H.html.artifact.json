@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "Python/pythoncore-3.14-64/Doc/html/genindex-H.html",
+  "entry": "Python/pythoncore-3.14-64/Doc/html/genindex-H.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-09T18:47:31.202Z",
+  "updatedAt": "2026-07-09T18:47:31.202Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

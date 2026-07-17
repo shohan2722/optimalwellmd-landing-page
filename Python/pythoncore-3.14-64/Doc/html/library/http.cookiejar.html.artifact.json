@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "Python/pythoncore-3.14-64/Doc/html/library/http.cookiejar.html",
+  "entry": "Python/pythoncore-3.14-64/Doc/html/library/http.cookiejar.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-09T18:47:31.875Z",
+  "updatedAt": "2026-07-09T18:47:31.875Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "Python/pythoncore-3.14-64/Doc/html/library/asyncio-sync.html",
+  "entry": "Python/pythoncore-3.14-64/Doc/html/library/asyncio-sync.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-09T18:47:31.737Z",
+  "updatedAt": "2026-07-09T18:47:31.737Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

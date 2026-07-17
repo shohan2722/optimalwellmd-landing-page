@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "Python/pythoncore-3.14-64/Lib/idlelib/help.html",
+  "entry": "Python/pythoncore-3.14-64/Lib/idlelib/help.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-09T18:47:28.389Z",
+  "updatedAt": "2026-07-09T18:47:28.389Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

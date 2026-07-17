@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "Python/pythoncore-3.14-64/Doc/html/howto/a-conceptual-overview-of-asyncio.html",
+  "entry": "Python/pythoncore-3.14-64/Doc/html/howto/a-conceptual-overview-of-asyncio.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-09T18:47:31.606Z",
+  "updatedAt": "2026-07-09T18:47:31.606Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}
