@@ -1,5 +1,5 @@
 /* ============================================================
-   Optimal Well MD — Landing Page Stylesheet
+   Optimal Well MD - Landing Page Stylesheet
    Physician-led medical spa. Editorial, restrained, trustworthy.
    ============================================================ */
 
@@ -252,8 +252,8 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
    ============================================================ */
 .hero {
   background: var(--paper);
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 140px;
+  padding-bottom: 140px;
   overflow: hidden;
 }
 .hero .wrap {
@@ -420,7 +420,7 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 72px;
-  align-items: start;
+  align-items: center;
 }
 .steps-list { display: flex; flex-direction: column; gap: 40px; }
 .step-item { display: flex; gap: 22px; }
@@ -441,15 +441,13 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
 .step-copy p { color: var(--ink-soft); font-size: 15.5px; line-height: 1.6; }
 
 .steps-media .media-frame {
-  aspect-ratio: 4 / 5;
   border-radius: var(--radius-md);
-  background: var(--mist);
+  overflow: hidden;
 }
 .steps-media img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 25%;
+  height: auto;
+  display: block;
 }
 
 /* ============================================================
@@ -524,7 +522,7 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
 }
 .included-grid {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
+  grid-template-columns: 0.85fr 1fr;
   gap: 0;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -660,7 +658,7 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
 .fit-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(11,12,12,0.94) 0%, rgba(11,12,12,0.82) 45%, rgba(11,12,12,0.55) 100%);
+  background: linear-gradient(100deg, rgba(11,12,12,0.70) 0%, rgba(11,12,12,0.50) 45%, rgba(11,12,12,0.25) 100%);
 }
 .fit-content {
   position: relative;
@@ -706,7 +704,7 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
    REAL PATIENT MOMENTS (image gallery)
    ============================================================ */
 .moments {
-  padding: 108px 0;
+  padding: 140px 0;
   background: var(--paper);
 }
 .moments-grid {
@@ -895,7 +893,7 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
 }
 
 /* ============================================================
-   RESPONSIVE — Tablet
+   RESPONSIVE - Tablet
    ============================================================ */
 @media (max-width: 1024px) {
   .hero .wrap { grid-template-columns: 1fr; gap: 48px; }
@@ -907,7 +905,7 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
   .ps-columns { grid-template-columns: 1fr 1fr; }
 
   .steps-body { grid-template-columns: 1fr; gap: 48px; }
-  .steps-media { order: -1; max-width: 420px; margin: 0 auto; }
+  .steps-media { max-width: 420px; margin: 0 auto; }
 
   .quote-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .authority-quote { grid-template-columns: auto 1fr; }
@@ -921,6 +919,7 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
 
   .fit-grid { grid-template-columns: 1fr; gap: 40px; }
 
+  .moments { padding: 100px 0; }
   .moments-grid { height: auto; grid-template-columns: 1fr 1fr; grid-template-rows: 260px 220px; }
   .moment.m1 { grid-column: 1 / 3; grid-row: 1; }
   .moment.m2 { grid-column: 1; grid-row: 2; }
@@ -931,7 +930,7 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
 }
 
 /* ============================================================
-   RESPONSIVE — Phone
+   RESPONSIVE - Phone
    ============================================================ */
 @media (max-width: 640px) {
   body { font-size: 16px; }
@@ -960,7 +959,7 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
 
   .header-cta .btn { display: none; }
 
-  .hero { padding-top: 40px; padding-bottom: 48px; }
+  .hero { padding-top: 100px; padding-bottom: 100px; }
   .hero-badges { gap: 8px; }
   .badge { font-size: 11.5px; padding: 6px 12px 6px 10px; }
   .hero-price-tag { left: 0; bottom: -16px; padding: 18px 22px; min-width: 170px; }
@@ -1006,4 +1005,149 @@ h3 { font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
 
 @media (min-width: 641px) {
   .header-phone { display: inline-flex; }
+}
+
+/* ============================================================
+   LOCATION (Google Maps)
+   ============================================================ */
+.location {
+  padding: 108px 0;
+  background: var(--mist);
+}
+.location .map-frame {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.location .map-frame iframe {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .location { padding: 72px 0; }
+}
+
+/* ============================================================
+   OFFER MODAL (GoHighLevel form)
+   ============================================================ */
+.optimalwell-offer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 180ms ease, visibility 180ms ease;
+}
+.optimalwell-offer-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.optimalwell-offer-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 16, 22, 0.78);
+  backdrop-filter: blur(4px);
+}
+.optimalwell-offer-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 680px);
+  margin: auto;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+  transform: translateY(0);
+  display: flex;
+  flex-direction: column;
+}
+.optimalwell-offer-modal__header {
+  padding: 28px 32px 8px;
+  text-align: center;
+}
+.optimalwell-offer-modal__header .eyebrow {
+  font-family: var(--font-label);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  display: block;
+  margin-bottom: 10px;
+}
+.optimalwell-offer-modal__header h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.optimalwell-offer-modal__header p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.optimalwell-offer-modal__form {
+  width: 100%;
+  height: 600px;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 0 0 18px 18px;
+  flex-shrink: 1;
+}
+.optimalwell-offer-modal__form iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.optimalwell-offer-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 3;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  color: #111111;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+.optimalwell-offer-modal__close:hover {
+  background: rgba(0, 0, 0, 0.14);
+}
+.offer-modal-open {
+  overflow: hidden;
+}
+@media (max-width: 640px) {
+  .optimalwell-offer-modal {
+    padding: 16px;
+  }
+  .optimalwell-offer-modal__dialog {
+    width: 100%;
+    border-radius: 14px;
+  }
+  .optimalwell-offer-modal__header {
+    padding: 24px 20px 4px;
+  }
+  .optimalwell-offer-modal__form,
+  .optimalwell-offer-modal__form iframe {
+    height: 700px;
+  }
 }

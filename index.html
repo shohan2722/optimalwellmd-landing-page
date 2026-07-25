@@ -24,7 +24,7 @@
     </nav>
     <div class="header-cta">
       <a class="tel-link header-phone" href="tel:+17577408660">(757) 740-8660</a>
-      <a class="btn btn-primary" href="#offer">Claim Your Offer</a>
+      <a class="btn btn-primary" href="#" data-open-offer-modal>Claim Your Offer</a>
       <button class="nav-toggle" aria-label="Menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
       </button>
@@ -47,13 +47,13 @@
           <span class="badge"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="7"></circle><path d="M10 6v4l3 2"></path></svg>Full Refund Guarantee</span>
         </div>
         <div class="hero-actions">
-          <a href="#offer" class="btn btn-primary">Claim My Unlimited Package</a>
+          <a href="#" class="btn btn-primary" data-open-offer-modal>Claim My Unlimited Package</a>
           <a href="tel:+17577408660" class="tel-link">or call (757) 740-8660</a>
         </div>
       </div>
       <div class="hero-media" data-reveal="">
         <figure class="media-frame">
-          <img src="mrdusqxp-ChatGPT_Image_Jul_9__2026__08_55_26_PM_2026-07-09_15_13_14.137900.webp" alt="Woman relaxing in treatment chair during a laser hair removal session at Optimal Well MD" loading="eager">
+          <img src="mrdusqxp-ChatGPT_Image_Jul_9__2026__08_55_26_PM_2026-07-09_15_13_14.137900.webp" alt="Close-up of a patient's lower face with soft border and defined lip line in a before-and-after style treatment graphic" loading="eager">
         </figure>
         <div class="hero-price-tag">
           <span class="amount"><sup>$</sup>999</span>
@@ -63,13 +63,300 @@
     </div>
   </section>
 
+  <!-- ============ TREATMENT SELECTOR ============ -->
+  <section class="treatment-selector-section">
+    <style>
+      .ts-wrapper {
+        --ts-bg: #000000;
+        --ts-card-bg: #111111;
+        --ts-border: #2a2a2a;
+        --ts-accent: #ffffff;
+        --ts-accent-dim: rgba(255,255,255,0.15);
+        --ts-accent-glow: rgba(255,255,255,0.35);
+        --ts-active-bg: rgba(255,255,255,0.08);
+        --ts-text: #e5e5e5;
+        --ts-text-dim: #7a7a7a;
+        --ts-cta: #2f6f57;
+        --ts-cta-hover: #234f3d;
+      }
+      .ts-wrapper ::before, .ts-wrapper ::after { box-sizing: border-box; }
+      .ts-wrapper {
+        background: var(--ts-bg);
+        color: var(--ts-text);
+        font-family: sans-serif;
+      }
+      .ts-wrapper .section-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .ts-wrapper .selector-layout {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 40px;
+        align-items: start;
+      }
+      .ts-wrapper .body-panel {
+        position: sticky;
+        top: 20px;
+        display: flex;
+        justify-content: center;
+        align-self: start;
+      }
+      .ts-wrapper .body-figure {
+        position: relative;
+        width: 320px;
+        height: 420px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ts-wrapper .body-svg { width: 100%; height: 100%; display: block; }
+      .ts-wrapper .zone {
+        fill: var(--ts-accent);
+        opacity: 0;
+        transition: .35s;
+        filter: drop-shadow(0 0 6px var(--ts-accent));
+      }
+      .ts-wrapper .zone.active { opacity: .75; }
+      .ts-wrapper .scan-line {
+        position: absolute;
+        left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--ts-accent), transparent);
+        opacity: .25;
+        animation: ts-scan 4s linear infinite;
+        pointer-events: none;
+      }
+      @keyframes ts-scan {
+        from { top: 0; opacity: .4; }
+        to { top: 100%; opacity: 0; }
+      }
+      .ts-wrapper .options-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .ts-wrapper .option-btn {
+        background: var(--ts-card-bg);
+        border: 1px solid var(--ts-border);
+        color: var(--ts-text);
+        padding: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: .25s;
+        width: 100%;
+      }
+      .ts-wrapper .option-btn.selected {
+        border-color: var(--ts-accent);
+        background: var(--ts-active-bg);
+        color: var(--ts-accent);
+      }
+      .ts-wrapper .option-btn.blocked,
+      .ts-wrapper .option-btn:disabled { opacity: .45; cursor: not-allowed; }
+      .ts-wrapper .option-btn:focus { outline: none; }
+      .ts-wrapper .selection-count {
+        margin-top: 18px;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: var(--ts-text-dim);
+      }
+      .ts-wrapper .selection-count span {
+        color: var(--ts-accent);
+        font-weight: 700;
+      }
+      .ts-wrapper .selection-feedback {
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: var(--ts-accent);
+        min-height: 20px;
+      }
+      .ts-wrapper .selection-feedback.invalid { color: #ff8a8a; }
+      .ts-wrapper .selected-list {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .ts-wrapper .selected-tag {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid var(--ts-accent-dim);
+        color: var(--ts-accent);
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 20px;
+      }
+      .ts-wrapper .cta-wrapper {
+        margin-top: 28px;
+        opacity: 0;
+        transform: translateY(16px);
+        transition: .4s;
+        pointer-events: none;
+      }
+      .ts-wrapper .cta-wrapper.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+      .ts-wrapper .cta-btn {
+        width: 100%;
+        background: var(--ts-cta);
+        color: #ffffff;
+        border: 1px solid transparent;
+        font-size: 15px;
+        font-weight: 600;
+        font-family: var(--font-label, -apple-system, BlinkMacSystemFont, system-ui, sans-serif);
+        letter-spacing: 0.01em;
+        padding: 16px 30px;
+        border-radius: var(--radius-sm, 6px);
+        cursor: pointer;
+        transition: transform 180ms var(--ease, ease), background 180ms var(--ease, ease), border-color 180ms var(--ease, ease);
+        min-height: 44px;
+      }
+      .ts-wrapper .cta-btn:hover {
+        background: var(--ts-cta-hover);
+      }
+      .ts-wrapper .cta-btn:active {
+        transform: translateY(1px);
+      }
+      .ts-wrapper .group-title {
+        grid-column: 1 / -1;
+        margin-top: 14px;
+        font-weight: 700;
+        color: var(--ts-accent);
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .treatment-selector-section {
+        padding: 80px 0;
+        background: #000000;
+      }
+      .treatment-selector-section .section-head * { color: #fff; }
+      @media (max-width: 900px) {
+        .ts-wrapper .selector-layout { grid-template-columns: 1fr; gap: 24px; }
+        .ts-wrapper .body-panel { position: relative; top: auto; }
+        .ts-wrapper .body-figure { width: 100%; max-width: 360px; margin: 0 auto; }
+        .ts-wrapper .options-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+    <div class="wrap">
+      <div class="section-head center" data-reveal="">
+        <span class="eyebrow">Select Your Areas</span>
+        <h2>Pick the treatment areas that matter to you.</h2>
+        <p class="lede">Choose 3 small, or 1 medium + 1 small, or 1 large area — unlimited sessions for 12 months.</p>
+      </div>
+    </div>
+    <div class="ts-wrapper">
+      <div class="section-wrapper">
+        <div class="selector-layout">
+          <div class="body-panel">
+            <div class="body-figure">
+              <div class="scan-line"></div>
+              <svg class="body-svg" viewBox="0 0 200 420" fill="none">
+                <ellipse id="z-chin" class="zone" cx="100" cy="60" rx="9" ry="4"></ellipse>
+                <rect id="z-hands-l" class="zone" x="38" y="160" width="16" height="50" rx="6"></rect>
+                <rect id="z-hands-r" class="zone" x="146" y="160" width="16" height="50" rx="6"></rect>
+                <ellipse id="z-sideburns-l" class="zone" cx="75" cy="50" rx="6" ry="12"></ellipse>
+                <ellipse id="z-sideburns-r" class="zone" cx="125" cy="50" rx="6" ry="12"></ellipse>
+                <ellipse id="z-areolas-l" class="zone" cx="82" cy="115" rx="8" ry="5"></ellipse>
+                <ellipse id="z-areolas-r" class="zone" cx="118" cy="115" rx="8" ry="5"></ellipse>
+                <ellipse id="z-upper-lip" class="zone" cx="100" cy="52" rx="10" ry="4"></ellipse>
+                <ellipse id="z-underarms-l" class="zone" cx="65" cy="120" rx="10" ry="8"></ellipse>
+                <ellipse id="z-underarms-r" class="zone" cx="135" cy="120" rx="10" ry="8"></ellipse>
+                <rect id="z-happy-trail" class="zone" x="96" y="175" width="8" height="20" rx="4"></rect>
+                <rect id="z-front-neck" class="zone" x="88" y="64" width="24" height="16" rx="4"></rect>
+                <rect id="z-back-neck" class="zone" x="70" y="100" width="60" height="20" rx="6"></rect>
+                <ellipse id="z-bikini" class="zone" cx="100" cy="200" rx="28" ry="12"></ellipse>
+                <ellipse cx="100" cy="38" rx="22" ry="26" stroke="#ffffff" stroke-width="1.5"></ellipse>
+                <path d="M90 62 L90 78 M110 62 L110 78" stroke="#ffffff" stroke-width="1.5"></path>
+                <path d="M68 78 Q55 85 52 100 L48 180 Q50 192 72 200 L72 215 M132 78 Q145 85 148 100 L152 180 Q150 192 128 200 L128 215" stroke="#ffffff" stroke-width="1.5" fill="none"></path>
+                <path d="M46 110 L38 160 L36 210 Q36 218 42 218 L48 218 Q54 218 54 210 L54 160" stroke="#ffffff" stroke-width="1.5" fill="none"></path>
+                <path d="M154 110 L162 160 L164 210 Q164 218 158 218 L152 218 Q146 218 146 210 L146 160" stroke="#ffffff" stroke-width="1.5" fill="none"></path>
+                <ellipse cx="46" cy="222" rx="8" ry="10" stroke="#ffffff" stroke-width="1.2"></ellipse>
+                <ellipse cx="154" cy="222" rx="8" ry="10" stroke="#ffffff" stroke-width="1.2"></ellipse>
+                <path d="M72 215 L70 300 L68 370 Q68 380 78 380 L90 380 Q98 378 98 370 L96 300 L94 215" stroke="#ffffff" stroke-width="1.5"></path>
+                <path d="M128 215 L130 300 L132 370 Q132 380 122 380 L110 380 Q102 378 102 370 L104 300 L106 215" stroke="#ffffff" stroke-width="1.5"></path>
+                <ellipse cx="80" cy="384" rx="12" ry="7" stroke="#ffffff" stroke-width="1.2"></ellipse>
+                <ellipse cx="120" cy="384" rx="12" ry="7" stroke="#ffffff" stroke-width="1.2"></ellipse>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <div class="options-grid">
+              <div class="group-title">Small Areas</div>
+              <button type="button" class="option-btn" data-zone="chin" data-size="small" onclick="toggleOption(this)">Chin</button>
+              <button type="button" class="option-btn" data-zone="hands" data-size="small" onclick="toggleOption(this)">Hands/Fingers</button>
+              <button type="button" class="option-btn" data-zone="sideburns" data-size="small" onclick="toggleOption(this)">Sideburns</button>
+              <button type="button" class="option-btn" data-zone="areolas" data-size="small" onclick="toggleOption(this)">Areolas</button>
+              <button type="button" class="option-btn" data-zone="upper-lip" data-size="small" onclick="toggleOption(this)">Upper Lip</button>
+              <button type="button" class="option-btn" data-zone="toes" data-size="small" onclick="toggleOption(this)">Toes</button>
+              <div class="group-title">Medium Areas</div>
+              <button type="button" class="option-btn" data-zone="underarms" data-size="medium" onclick="toggleOption(this)">Underarms</button>
+              <button type="button" class="option-btn" data-zone="happy-trail" data-size="medium" onclick="toggleOption(this)">Happy Trail</button>
+              <button type="button" class="option-btn" data-zone="front-neck" data-size="medium" onclick="toggleOption(this)">Front of Neck</button>
+              <button type="button" class="option-btn" data-zone="back-neck" data-size="medium" onclick="toggleOption(this)">Back of Neck</button>
+              <button type="button" class="option-btn" data-zone="bikini" data-size="medium" onclick="toggleOption(this)">Bikini Line</button>
+              <button type="button" class="option-btn" data-zone="chest" data-size="medium" onclick="toggleOption(this)">Chest</button>
+              <button type="button" class="option-btn" data-zone="stomach" data-size="medium" onclick="toggleOption(this)">Stomach</button>
+              <button type="button" class="option-btn" data-zone="shoulders" data-size="medium" onclick="toggleOption(this)">Shoulders</button>
+              <button type="button" class="option-btn" data-zone="buttocks" data-size="medium" onclick="toggleOption(this)">Buttocks</button>
+              <div class="group-title">Large Areas</div>
+              <button type="button" class="option-btn" data-zone="brazilian" data-size="large" onclick="toggleOption(this)">Brazilian</button>
+              <button type="button" class="option-btn" data-zone="lower-center-back" data-size="large" onclick="toggleOption(this)">Lower Center Back</button>
+              <button type="button" class="option-btn" data-zone="lower-arms" data-size="large" onclick="toggleOption(this)">Lower Arms</button>
+              <button type="button" class="option-btn" data-zone="full-face" data-size="large" onclick="toggleOption(this)">Full Face</button>
+              <button type="button" class="option-btn" data-zone="lower-legs" data-size="large" onclick="toggleOption(this)">Lower Legs (Knee Down)</button>
+              <button type="button" class="option-btn" data-zone="upper-back" data-size="large" onclick="toggleOption(this)">Upper Back</button>
+              <button type="button" class="option-btn" data-zone="full-chest-men" data-size="large" onclick="toggleOption(this)">Full Chest (Men)</button>
+            </div>
+            <p class="selection-count"><span id="countNum">0</span> area(s) selected</p>
+            <div class="selection-feedback" id="selectionFeedback"></div>
+            <div class="selected-list" id="selectedList"></div>
+            <div class="cta-wrapper" id="ctaWrapper">
+              <button class="cta-btn" data-open-offer-modal>Claim Your Offer Today</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var zoneMap={
+        chin:['z-chin'],
+        hands:['z-hands-l','z-hands-r'],
+        sideburns:['z-sideburns-l','z-sideburns-r'],
+        areolas:['z-areolas-l','z-areolas-r'],
+        'upper-lip':['z-upper-lip'],
+        toes:[],
+        underarms:['z-underarms-l','z-underarms-r'],
+        'happy-trail':['z-happy-trail'],
+        'front-neck':['z-front-neck'],
+        'back-neck':['z-back-neck'],
+        bikini:['z-bikini'],
+        chest:[], stomach:[], shoulders:[], buttocks:[], brazilian:[],
+        'lower-center-back':[], 'lower-arms':[],
+        'full-face':['z-chin','z-upper-lip','z-sideburns-l','z-sideburns-r'],
+        'lower-legs':[], 'upper-back':[], 'full-chest-men':[]
+      };
+      var selected=new Set();
+      function getCounts(s){var sc=0,mc=0,lc=0;s.forEach(function(z){var b=document.querySelector('[data-zone="'+z+'"]');var sz=b?b.dataset.size:'';if(sz==='small')sc++;if(sz==='medium')mc++;if(sz==='large')lc++;});return{smallCount:sc,mediumCount:mc,largeCount:lc};}
+      function isValidSelection(s){var c=getCounts(s);return(c.largeCount===1&&c.mediumCount===0&&c.smallCount===0)||(c.largeCount===0&&c.mediumCount===1&&c.smallCount===1)||(c.largeCount===0&&c.mediumCount===0&&c.smallCount===3);}
+      function canSelect(z){var t=new Set(selected);t.add(z);var c=getCounts(t);if(c.largeCount>1)return false;if(c.largeCount===1&&(c.mediumCount>0||c.smallCount>0))return false;if(c.mediumCount>1)return false;if(c.smallCount>3)return false;if(c.mediumCount===1&&c.smallCount>1)return false;if(c.mediumCount>0&&c.largeCount>0)return false;return true;}
+      function getFeedbackMessage(){var c=getCounts(selected);if(isValidSelection(selected)){if(c.largeCount===1)return'Valid selection: 1 large';if(c.mediumCount===1&&c.smallCount===1)return'Valid selection: 1 medium + 1 small';if(c.smallCount===3)return'Valid selection: 3 small';}if(c.largeCount===1)return'Large area selected — no other areas allowed';if(c.mediumCount===1&&c.smallCount===0)return'1 medium selected — choose 1 small';if(c.smallCount>0&&c.mediumCount===0&&c.largeCount===0)return c.smallCount+' of 3 small selected';return'Choose 3 small, or 1 medium + 1 small, or 1 large';}
+      function toggleOption(btn){var z=btn.dataset.zone;if(!z)return;if(selected.has(z)){selected.delete(z);btn.classList.remove('selected');(zoneMap[z]||[]).forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});}else{if(!canSelect(z))return;selected.add(z);btn.classList.add('selected');(zoneMap[z]||[]).forEach(function(id){var el=document.getElementById(id);if(el)el.classList.add('active');});}updateUI();}
+      function updateUI(){document.getElementById('countNum').textContent=selected.size;var list=document.getElementById('selectedList');list.innerHTML='';selected.forEach(function(z){var t=document.createElement('span');t.className='selected-tag';t.textContent=document.querySelector('[data-zone="'+z+'"]').textContent;list.appendChild(t);});document.getElementById('selectionFeedback').textContent=getFeedbackMessage();var cta=document.getElementById('ctaWrapper');isValidSelection(selected)?cta.classList.add('visible'):cta.classList.remove('visible');}
+      updateUI();
+    </script>
+  </section>
+
   <!-- ============ PROBLEM / SOLUTION ============ -->
   <section class="problem-solution" id="offer">
     <div class="wrap">
       <div class="ps-grid">
         <figure class="ps-media" data-reveal="">
           <div class="media-frame">
-            <img src="mrdusqvb-ChatGPT_Image_Jul_9__2026__08_56_13_PM_2026-07-09_15_13_15.505491.webp" alt="Close-up of a laser hair removal handpiece being applied to the neck area">
+            <img src="laser-in-action.jpg" alt="Laser hair removal treatment being performed on a patient's face in a clinic room with a medical provider">
           </div>
         </figure>
         <div class="ps-text" data-reveal="">
@@ -103,12 +390,13 @@
   <!-- ============ STEPS TO SUCCESS ============ -->
   <section class="steps" id="steps">
     <div class="wrap">
-      <div class="section-head" data-reveal="">
-        <span class="eyebrow">How It Works</span>
-        <h2>Your journey to effortless, smooth skin in three steps.</h2>
-      </div>
       <div class="steps-body">
-        <div class="steps-list">
+        <div class="steps-text">
+          <div class="section-head" data-reveal="">
+            <span class="eyebrow">How It Works</span>
+            <h2>Your journey to effortless, smooth skin in three steps.</h2>
+          </div>
+          <div class="steps-list">
           <div class="step-item" data-reveal="">
             <span class="step-num">1</span>
             <div class="step-copy">
@@ -131,9 +419,10 @@
             </div>
           </div>
         </div>
+        </div>
         <figure class="steps-media" data-reveal="">
           <div class="media-frame">
-            <img src="mrdusqxi-Screenshot_9-7-2026_204516_www.instagram.com_2026-07-09_15_13_17.856770.webp" alt="Provider preparing a patient's arm for a laser hair removal treatment in-clinic">
+            <img src="laser-in-action-3.jpg" alt="Laser handpiece pressed against skin during a full-body hair removal treatment session at Optimal Well MD">
           </div>
         </figure>
       </div>
@@ -179,10 +468,10 @@
   <section class="included">
     <div class="wrap">
        <div class="included-grid" data-reveal="">
-         <figure class="included-media">
-            <img src="ChatGPT-Image-Jul-17_-2026_-12_01_56-PM.png" alt="Patient admiring smooth skin results in mirror after completing laser hair removal treatment">
-         </figure>
-        <div class="included-panel">
+          <div class="included-media">
+            <img src="laser-in-action-2.jpg" alt="Laser handpiece being applied to patient's skin during treatment" loading="lazy">
+          </div>
+          <div class="included-panel">
           <span class="eyebrow">What's Included</span>
           <h2>Here's exactly what you get when you book today.</h2>
           <ul class="included-list">
@@ -200,7 +489,7 @@
             </div>
             <p class="guarantee">Full refund if you're not a candidate. Zero risk.</p>
           </div>
-          <a href="#final-cta" class="btn btn-primary btn-block">Yes, I'm Ready to Claim My Unlimited Package</a>
+          <a href="#" class="btn btn-primary btn-block" data-open-offer-modal>Yes, I'm Ready to Claim My Unlimited Package</a>
         </div>
       </div>
     </div>
@@ -219,7 +508,7 @@
         </div>
         <figure class="about-media" data-reveal="">
           <div class="media-frame">
-            <img src="mrdusqvq-IMGI_2_1_2026-07-09_15_13_17.005902.webp" alt="Dr. Ferrel and the Optimal Well MD clinical team standing together">
+             <img src="team-photo.jpg" alt="Optimal Well MD clinical team in the clinic treatment room">
           </div>
           <figcaption>The Optimal Well MD team — physician-led, patient-first.</figcaption>
         </figure>
@@ -230,7 +519,7 @@
   <!-- ============ IS THIS FOR ME ============ -->
   <section class="fit">
     <div class="fit-media">
-      <img src="mrdusqw4-IMGI_8_1_2026-07-09_15_13_16.696048.webp" alt="" role="presentation">
+      <img src="section-bg.jpg" alt="Laser hair removal treatment in a modern medical clinic" role="presentation">
     </div>
     <div class="fit-overlay"></div>
     <div class="fit-content">
@@ -271,14 +560,14 @@
        </div>
        <div class="moments-grid" data-reveal="">
          <figure class="moment m1">
-           <img src="ChatGPT-Image-Jul-9_-2026_-08_55_26-PM-1.png" alt="Patient's leg during laser hair removal treatment">
+            <img src="mrdusqxp-ChatGPT_Image_Jul_9__2026__08_55_26_PM_2026-07-09_15_13_14.137900.webp" alt="Close-up of a patient's lower face with soft border and defined lip line in a before-and-after style treatment graphic">
          </figure>
-         <figure class="moment m2">
-           <img src="ChatGPT-Image-Jul-17_-2026_-12_01_56-PM-1.png" alt="Shoulder area undergoing laser hair removal treatment">
-         </figure>
-         <figure class="moment m3">
-           <img src="Screenshot_9-7-2026_204127_www.instagram.com_2026-07-09_15_13_17.530511-1.webp" alt="Patient admiring smooth skin results after treatment">
-         </figure>
+          <figure class="moment m2">
+             <img src="laser-machine.jpg" alt="Laser hair removal machine and equipment in a medical treatment room at Optimal Well MD">
+          </figure>
+          <figure class="moment m3">
+            <img src="laser-in-action-2.jpg" alt="Laser handpiece being applied to patient's skin during a treatment session">
+          </figure>
        </div>
      </div>
    </section>
@@ -327,13 +616,27 @@
       <p class="lede">3 areas. 12 months. Unlimited sessions. One flat price of $999 — backed by a full refund if you're not a candidate.</p>
       <p class="cta-question">Will you claim your unlimited package now?</p>
       <div class="final-cta-actions">
-        <a href="tel:+17577408660" class="btn btn-primary">Yes, I'm Ready to Claim My Unlimited Package</a>
+        <a href="#" class="btn btn-primary" data-open-offer-modal>Yes, I'm Ready to Claim My Unlimited Package</a>
         <a href="tel:+17577408660" class="tel-link">or call (757) 740-8660</a>
       </div>
     </div>
   </section>
 
 </main>
+
+  <!-- ============ LOCATION ============ -->
+  <section class="location">
+    <div class="wrap">
+      <div class="section-head center" data-reveal="">
+        <span class="eyebrow">Visit Optimal Well MD</span>
+        <h2>Conveniently Located in Virginia Beach</h2>
+        <p class="lede">Visit our physician-led clinic for your consultation and treatments.</p>
+      </div>
+      <div class="map-frame" data-reveal="">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3196.2515401329756!2d-76.01881492416328!3d36.76453267225731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89bac17141c2f683%3A0x44f3cde3c1b141fd!2sOptimal%20Well%20M.D.!5e0!3m2!1sen!2sph!4v1777472729075!5m2!1sen!2sph" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Optimal Well MD location in Virginia Beach"></iframe>
+      </div>
+    </div>
+  </section>
 
 <footer class="site-footer">
   <div class="wrap">
@@ -348,7 +651,7 @@
       <div class="footer-col">
         <h5>Contact</h5>
         <a href="tel:+17577408660">(757) 740-8660</a>
-        <a href="#final-cta">Book Your Unlimited Package</a>
+        <a href="#" data-open-offer-modal>Book Your Unlimited Package</a>
       </div>
       <div class="footer-col">
         <h5>Explore</h5>
@@ -366,10 +669,85 @@
 </footer>
 
 <div class="mobile-cta">
-  <a href="#offer" class="btn btn-primary btn-block">Claim My Unlimited Package — $999</a>
+  <a href="#" class="btn btn-primary btn-block" data-open-offer-modal>Claim My Unlimited Package — $999</a>
 </div>
 
+<!-- ============ OFFER MODAL (GoHighLevel form) ============ -->
+<div
+  id="optimalwell-offer-modal"
+  class="optimalwell-offer-modal"
+  aria-hidden="true"
+>
+  <div
+    class="optimalwell-offer-modal__backdrop"
+    data-offer-modal-close
+  ></div>
+  <div
+    class="optimalwell-offer-modal__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="optimalwell-offer-modal-title"
+  >
+    <button
+      type="button"
+      class="optimalwell-offer-modal__close"
+      data-offer-modal-close
+      aria-label="Close form"
+    >
+      ×
+    </button>
+    <div class="optimalwell-offer-modal__header">
+      <p class="eyebrow">CLAIM YOUR UNLIMITED PACKAGE</p>
+      <h2 id="optimalwell-offer-modal-title">Take the First Step</h2>
+      <p>Enter your information below to secure your spot and continue.</p>
+    </div>
+    <div class="optimalwell-offer-modal__form">
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/JU4h4M6bTrN0pPFApgdD"
+        style="width: 100%; height: 100%; border: none; border-radius: 4px; display: block;"
+        id="inline-JU4h4M6bTrN0pPFApgdD"
+        data-layout='{"id":"INLINE"}'
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Unlimited Laser Hair Removal"
+        data-height="520"
+        data-layout-iframe-id="inline-JU4h4M6bTrN0pPFApgdD"
+        data-form-id="JU4h4M6bTrN0pPFApgdD"
+        title="Unlimited Laser Hair Removal offer form"
+        allow="payment"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+
 <script>
+  // Ensure form re-renders when modal opens
+  (function () {
+    var modal = document.getElementById('optimalwell-offer-modal');
+    if (!modal) return;
+    var originalOpen = null;
+    var openButtons = document.querySelectorAll('[data-open-offer-modal]');
+    
+    function triggerFormRender() {
+      window.setTimeout(function () {
+        if (window.LeadConnectorWidget) {
+          window.LeadConnectorWidget.render && window.LeadConnectorWidget.render();
+        }
+        window.dispatchEvent(new Event('resize'));
+      }, 100);
+    }
+
+    openButtons.forEach(function (button) {
+      button.addEventListener('click', triggerFormRender);
+    });
+  })();
+
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(function (item) {
     var btn = item.querySelector('.faq-q');
@@ -418,6 +796,58 @@
   } else {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
+
+  // Offer modal
+  (function () {
+    var modal = document.getElementById('optimalwell-offer-modal');
+    if (!modal) return;
+    var dialog = modal.querySelector('.optimalwell-offer-modal__dialog');
+    var closeButton = modal.querySelector('.optimalwell-offer-modal__close');
+    var openButtons = document.querySelectorAll('[data-open-offer-modal]');
+    var closeElements = modal.querySelectorAll('[data-offer-modal-close]');
+    var previouslyFocusedElement = null;
+
+    function openOfferModal(event) {
+      if (event) event.preventDefault();
+      previouslyFocusedElement = document.activeElement;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('offer-modal-open');
+      requestAnimationFrame(function () {
+        if (closeButton) closeButton.focus();
+        else if (dialog) { dialog.setAttribute('tabindex', '-1'); dialog.focus(); }
+      });
+      window.setTimeout(function () {
+        window.dispatchEvent(new Event('resize'));
+      }, 250);
+    }
+
+    function closeOfferModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('offer-modal-open');
+      if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
+        previouslyFocusedElement.focus();
+      }
+    }
+
+    openButtons.forEach(function (button) {
+      button.addEventListener('click', openOfferModal);
+    });
+    closeElements.forEach(function (element) {
+      element.addEventListener('click', closeOfferModal);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeOfferModal();
+      }
+    });
+    if (dialog) {
+      dialog.addEventListener('click', function (event) {
+        event.stopPropagation();
+      });
+    }
+  })();
 </script>
 
 
