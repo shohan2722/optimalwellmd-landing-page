@@ -2,13 +2,16 @@
 <html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Optimal Well MD â€” Unlimited Laser Hair Removal, $999 Flat | Virginia Beach</title>
+<title>Optimal Well MD &mdash; Unlimited Laser Hair Removal, $999 Flat | Virginia Beach</title>
 <meta name="description" content="Physician-led laser hair removal in Virginia Beach. Unlimited sessions on 3 areas for 12 months, one flat price of $999. No contracts, no per-session math, full refund if you're not a candidate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="urgency-bar">âš ï¸ LAUNCH PRICE ENDS SUNDAY AT MIDNIGHT â€” <strong>Unlimited Laser, 3 Areas, 12 Months for $999</strong></div>
+<div class="urgency-bar">&#9888;&#65039; LAUNCH PRICE ENDS SUNDAY AT MIDNIGHT &mdash; <strong>Unlimited Laser, 3 Areas, 12 Months for $999</strong></div>
 
 <header class="site-header">
   <div class="wrap">
@@ -38,9 +41,9 @@
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy" data-reveal="">
-        <span class="eyebrow">Physician-Led Â· Virginia Beach</span>
+        <span class="eyebrow">Physician-Led &middot; Virginia Beach</span>
         <h1>Stop paying per session. Get unlimited laser hair removal for one flat price.</h1>
-        <p class="lede">3 areas of your choice. 12 full months. Unlimited sessions. No contracts, no per-visit math, no consult needed to purchase â€” just one honest price of $999.</p>
+        <p class="lede">3 areas of your choice. 12 full months. Unlimited sessions. No contracts, no per-visit math, no consult needed to purchase &mdash; just one honest price of $999.</p>
         <div class="hero-badges">
           <span class="badge"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L10 14.4l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"></path></svg>Physician-Led</span>
           <span class="badge"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>No Contracts</span>
@@ -57,7 +60,7 @@
         </figure>
         <div class="hero-price-tag">
           <span class="amount"><sup>$</sup>999</span>
-          <span class="label">Flat Â· 3 Areas Â· 12 Months</span>
+          <span class="label">Flat &middot; 3 Areas &middot; 12 Months</span>
         </div>
       </div>
     </div>
@@ -244,7 +247,7 @@
       <div class="section-head center" data-reveal="">
         <span class="eyebrow">Select Your Areas</span>
         <h2>Pick the treatment areas that matter to you.</h2>
-        <p class="lede">Choose 3 small, or 1 medium + 1 small, or 1 large area â€” unlimited sessions for 12 months.</p>
+        <p class="lede">Choose 3 small, or 1 medium + 1 small, or 1 large area &mdash; unlimited sessions for 12 months.</p>
       </div>
     </div>
     <div class="ts-wrapper">
@@ -342,7 +345,7 @@
       function getCounts(s){var sc=0,mc=0,lc=0;s.forEach(function(z){var b=document.querySelector('[data-zone="'+z+'"]');var sz=b?b.dataset.size:'';if(sz==='small')sc++;if(sz==='medium')mc++;if(sz==='large')lc++;});return{smallCount:sc,mediumCount:mc,largeCount:lc};}
       function isValidSelection(s){var c=getCounts(s);return(c.largeCount===1&&c.mediumCount===0&&c.smallCount===0)||(c.largeCount===0&&c.mediumCount===1&&c.smallCount===1)||(c.largeCount===0&&c.mediumCount===0&&c.smallCount===3);}
       function canSelect(z){var t=new Set(selected);t.add(z);var c=getCounts(t);if(c.largeCount>1)return false;if(c.largeCount===1&&(c.mediumCount>0||c.smallCount>0))return false;if(c.mediumCount>1)return false;if(c.smallCount>3)return false;if(c.mediumCount===1&&c.smallCount>1)return false;if(c.mediumCount>0&&c.largeCount>0)return false;return true;}
-      function getFeedbackMessage(){var c=getCounts(selected);if(isValidSelection(selected)){if(c.largeCount===1)return'Valid selection: 1 large';if(c.mediumCount===1&&c.smallCount===1)return'Valid selection: 1 medium + 1 small';if(c.smallCount===3)return'Valid selection: 3 small';}if(c.largeCount===1)return'Large area selected â€” no other areas allowed';if(c.mediumCount===1&&c.smallCount===0)return'1 medium selected â€” choose 1 small';if(c.smallCount>0&&c.mediumCount===0&&c.largeCount===0)return c.smallCount+' of 3 small selected';return'Choose 3 small, or 1 medium + 1 small, or 1 large';}
+      function getFeedbackMessage(){var c=getCounts(selected);if(isValidSelection(selected)){if(c.largeCount===1)return'Valid selection: 1 large';if(c.mediumCount===1&&c.smallCount===1)return'Valid selection: 1 medium + 1 small';if(c.smallCount===3)return'Valid selection: 3 small';}if(c.largeCount===1)return'Large area selected \u2014 no other areas allowed';if(c.mediumCount===1&&c.smallCount===0)return'1 medium selected \u2014 choose 1 small';if(c.smallCount>0&&c.mediumCount===0&&c.largeCount===0)return c.smallCount+' of 3 small selected';return'Choose 3 small, or 1 medium + 1 small, or 1 large';}
       function toggleOption(btn){var z=btn.dataset.zone;if(!z)return;if(selected.has(z)){selected.delete(z);btn.classList.remove('selected');(zoneMap[z]||[]).forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});}else{if(!canSelect(z))return;selected.add(z);btn.classList.add('selected');(zoneMap[z]||[]).forEach(function(id){var el=document.getElementById(id);if(el)el.classList.add('active');});}updateUI();}
       function updateUI(){document.getElementById('countNum').textContent=selected.size;var list=document.getElementById('selectedList');list.innerHTML='';selected.forEach(function(z){var t=document.createElement('span');t.className='selected-tag';t.textContent=document.querySelector('[data-zone="'+z+'"]').textContent;list.appendChild(t);});document.getElementById('selectionFeedback').textContent=getFeedbackMessage();var cta=document.getElementById('ctaWrapper');isValidSelection(selected)?cta.classList.add('visible'):cta.classList.remove('visible');}
       updateUI();
@@ -360,7 +363,7 @@
         </figure>
         <div class="ps-text" data-reveal="">
           <span class="eyebrow">The Problem</span>
-          <h2>The "per-session math" is costing you more than money.</h2>
+          <h2>The &ldquo;per-session math&rdquo; is costing you more than money.</h2>
           <div class="ps-columns">
             <div class="ps-col pain">
               <h4>What you've dealt with</h4>
@@ -376,7 +379,7 @@
               <ul>
                 <li>No contracts. No remaining sessions to track. No surprise fees.</li>
                 <li>Unlimited treatment on 3 areas for 12 full months.</li>
-                <li>Come in when it's convenient for you â€” not when a package says you have to.</li>
+                <li>Come in when it's convenient for you &mdash; not when a package says you have to.</li>
                 <li>The most transparent, customer-first approach to laser in Virginia Beach.</li>
               </ul>
             </div>
@@ -400,7 +403,7 @@
             <span class="step-num">1</span>
             <div class="step-copy">
               <h3>Claim your offer</h3>
-              <p>No consult needed to purchase. Click "Book Now" below and your purchase locks in the launch price instantly. No sales call, no pressure â€” you're in.</p>
+              <p>No consult needed to purchase. Click &ldquo;Book Now&rdquo; below and your purchase locks in the launch price instantly. No sales call, no pressure &mdash; you're in.</p>
             </div>
           </div>
           <div class="step-item" data-reveal="">
@@ -414,7 +417,7 @@
             <span class="step-num">3</span>
             <div class="step-copy">
               <h3>Unlimited sessions, effortless results</h3>
-              <p>Schedule sessions on your own time. Come in, see results, and never stress about "saving" sessions â€” you'll get the complete outcome you deserve.</p>
+              <p>Schedule sessions on your own time. Come in, see results, and never stress about &ldquo;saving&rdquo; sessions &mdash; you'll get the complete outcome you deserve.</p>
             </div>
           </div>
         </div>
@@ -438,23 +441,23 @@
       </div>
       <div class="quote-grid">
         <blockquote class="quote-card" data-reveal="">
-          <span class="quote-mark">â€œ</span>
+          <span class="quote-mark">&ldquo;</span>
           <p class="q-text">I've done laser before and was always frustrated with the packages. This is the first time I felt like I wasn't being nickel-and-dimed. The results are amazing, and the staff is incredible.</p>
           <cite class="quote-attr">Sarah T.</cite>
         </blockquote>
         <blockquote class="quote-card" data-reveal="">
-          <span class="quote-mark">â€œ</span>
-          <p class="q-text">I was skeptical. I thought, "What's the catch?" But there is none. I come in for my sessions whenever I want. My skin has never looked better.</p>
+          <span class="quote-mark">&ldquo;</span>
+          <p class="q-text">I was skeptical. I thought, &ldquo;What's the catch?&rdquo; But there is none. I come in for my sessions whenever I want. My skin has never looked better.</p>
           <cite class="quote-attr">Jessica L.</cite>
         </blockquote>
         <blockquote class="quote-card" data-reveal="">
-          <span class="quote-mark">â€œ</span>
+          <span class="quote-mark">&ldquo;</span>
           <p class="q-text">I just book, show up, and get treated. No per-session math, no stress. This is what a doctor's office should feel like.</p>
           <cite class="quote-attr">Rebecca K.</cite>
         </blockquote>
       </div>
       <blockquote class="authority-quote" data-reveal="">
-        <span class="quote-mark">â€œ</span>
+        <span class="quote-mark">&ldquo;</span>
         <div>
           <p class="q-text">Dr. Ferrel takes the time to listen. It's not a cookie-cutter process. She and the team make you feel truly cared for.</p>
           <cite class="quote-attr">David R.</cite>
@@ -474,11 +477,11 @@
           <span class="eyebrow">What's Included</span>
           <h2>Here's exactly what you get when you book today.</h2>
           <ul class="included-list">
-            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10l4 4 8-8"></path></svg><span><strong>3 full treatment areas</strong> of your choice â€” underarms, bikini, legs, face, and more.</span></li>
-            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10l4 4 8-8"></path></svg><span><strong>12 months of unlimited sessions</strong> â€” no cap on the number of treatments.</span></li>
-            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10l4 4 8-8"></path></svg><span><strong>One flat price of $999</strong> â€” no sales tax surprises, no hidden fees.</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10l4 4 8-8"></path></svg><span><strong>3 full treatment areas</strong> of your choice &mdash; underarms, bikini, legs, face, and more.</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10l4 4 8-8"></path></svg><span><strong>12 months of unlimited sessions</strong> &mdash; no cap on the number of treatments.</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10l4 4 8-8"></path></svg><span><strong>One flat price of $999</strong> &mdash; no sales tax surprises, no hidden fees.</span></li>
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10l4 4 8-8"></path></svg><span><strong>Complimentary in-person consultation</strong> at your first visit to confirm candidacy.</span></li>
-            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10l4 4 8-8"></path></svg><span><strong>Physician-led supervision</strong> â€” every treatment overseen by Dr. Ferrel.</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10l4 4 8-8"></path></svg><span><strong>Physician-led supervision</strong> &mdash; every treatment overseen by Dr. Ferrel.</span></li>
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10l4 4 8-8"></path></svg><span><strong>Zero contracts, zero per-session math.</strong> You own this. Simple.</span></li>
           </ul>
           <div class="price-panel">
@@ -502,14 +505,14 @@
           <span class="eyebrow">Why We Created This Offer</span>
           <h2>We get it. You're tired of being sold to.</h2>
           <p>You want a partner in your health and wellness, not a salesperson.</p>
-          <p>We are Optimal Well MD â€” a physician-led clinic in Virginia Beach. Our practice is built on the principle that personalized, honest care should be the standard, not the exception. We see too many people wasting money and time on treatments that don't deliver.</p>
+          <p>We are Optimal Well MD &mdash; a physician-led clinic in Virginia Beach. Our practice is built on the principle that personalized, honest care should be the standard, not the exception. We see too many people wasting money and time on treatments that don't deliver.</p>
           <p>We created this unlimited offer for one simple reason: to prove that medical aesthetics can be straightforward, fair, and effective. We want to be your first choice, and we know the best way to earn your trust is with an offer so transparent it feels backward. Because if we can't treat you effectively, you shouldn't pay a dime.</p>
         </div>
         <figure class="about-media" data-reveal="">
           <div class="media-frame">
              <img src="team-photo.jpg" alt="Optimal Well MD clinical team in the clinic treatment room">
           </div>
-          <figcaption>The Optimal Well MD team â€” physician-led, patient-first.</figcaption>
+          <figcaption>The Optimal Well MD team &mdash; physician-led, patient-first.</figcaption>
         </figure>
       </div>
     </div>
@@ -541,7 +544,7 @@
             <ul>
               <li>You're just curious about the price and not ready to commit.</li>
               <li>You want a cheap, one-time "deal" without any real value.</li>
-              <li>You're looking for a one-size-fits-all treatment â€” we customize your plan at visit one.</li>
+              <li>You're looking for a one-size-fits-all treatment &mdash; we customize your plan at visit one.</li>
               <li>You're not willing to come into our clinic in Virginia Beach for treatment.</li>
             </ul>
           </div>
@@ -555,7 +558,7 @@
      <div class="wrap">
        <div class="section-head" data-reveal="">
          <span class="eyebrow">Real Patient Moments</span>
-         <h2>Unlimited, in practice â€” not just on paper.</h2>
+          <h2>Unlimited, in practice &mdash; not just on paper.</h2>
        </div>
        <div class="moments-grid" data-reveal="">
          <figure class="moment m1">
@@ -597,7 +600,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">What areas can I choose?<span class="plus"></span></button>
-          <div class="faq-a"><div class="faq-a-inner">You can choose any 3 areas â€” underarms, bikini, lower legs, and more. Your provider will help you decide at your first visit.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">You can choose any 3 areas &mdash; underarms, bikini, lower legs, and more. Your provider will help you decide at your first visit.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Do you have payment plans?<span class="plus"></span></button>
@@ -612,7 +615,7 @@
     <div class="wrap">
       <span class="eyebrow on-dark">Ready When You Are</span>
       <h2>Ready to never do the math again?</h2>
-      <p class="lede">3 areas. 12 months. Unlimited sessions. One flat price of $999 â€” backed by a full refund if you're not a candidate.</p>
+      <p class="lede">3 areas. 12 months. Unlimited sessions. One flat price of $999 &mdash; backed by a full refund if you're not a candidate.</p>
       <p class="cta-question">Will you claim your unlimited package now?</p>
       <div class="final-cta-actions">
         <a href="#" class="btn btn-primary" data-open-offer-modal>Yes, I'm Ready to Claim My Unlimited Package</a>
@@ -661,14 +664,14 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>Â© 2026 Optimal Well MD. All rights reserved.</span>
+      <span>&copy; 2026 Optimal Well MD. All rights reserved.</span>
       <span>Virginia Beach, VA</span>
     </div>
   </div>
 </footer>
 
 <div class="mobile-cta">
-  <a href="#" class="btn btn-primary btn-block" data-open-offer-modal>Claim My Unlimited Package â€” $999</a>
+  <a href="#" class="btn btn-primary btn-block" data-open-offer-modal>Claim My Unlimited Package &mdash; $999</a>
 </div>
 
 <!-- ============ OFFER MODAL (GoHighLevel form) ============ -->
@@ -693,7 +696,7 @@
       data-offer-modal-close
       aria-label="Close form"
     >
-      Ã—
+      &times;
     </button>
     <div class="optimalwell-offer-modal__header">
       <p class="eyebrow">CLAIM YOUR UNLIMITED PACKAGE</p>
